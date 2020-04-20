@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D动画</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <style>
+        body{
+            background-color: rgb(214, 199, 199);
+            transform: rotateX(30deg);
+        }
+        /* 这样可以使BOx也脱离了平面，拥有了井深的效果 */
+        .wrapper{
+            perspective: 600px;
+            /* 默认的眼睛的视点实在中间的，所以调整这个宽度，可以调整眼睛视点位置 */
+            width: 200px;
+            height: 200px;
+            margin: 100px;
+            border: 1px solid #222;
+            /* 调整视点的位置属性方法perspective-origin */
+            /* perspective-origin: center -300px; */
+            transform: rotateX(30deg);
+        }
+        .box{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            text-align: center;
+            line-height: 50px;
+            /* background: #fff; */
+            /* 设置父级的空间距离，距离值越远，物体视觉越小 */
+            /* perspective: 800px; */
+            /* 沿着Y轴旋转属性 */
+            transform: rotateY(30deg);
+            /* 保留3D特效属性 不能设置overflow:hidden超出隐藏属性，否着无3D效果*/
+            transform-style: preserve-3d;
+            /* linear 匀速  infinity 无限 */
+            animation: move 6s linear infinite;
+        }
+        .item{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+            font-size: 30px;
+        }
+         .one{
+           
+           background: rgb(151, 15, 161);
+           transform: rotateX(-45deg);
+
+       }
+       .two{
+            background: rgb(101, 150, 11);
+            transform: rotateX(75deg);
+        } 
+        /* 设置关键针 */
+        @keyframes move {
+            0%{
+                transform: rotateX(0);
+            }
+            100%{
+                transform: rotateX(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">我想你们了
+            <div class="item one"> 老婆你好</div>
+            <div class="item two"> 宝宝你好</div>
+        </div>
+    </div>
+   
+</body>
+
+</html>
